@@ -1,0 +1,27 @@
+El contrato DirectMessageContract es un contrato inteligente en Solidity diseñado para permitir el envío y recepción de mensajes directos cifrados entre usuarios que poseen tokens no fungibles (NFT) de nombres de usuario CAW. Los mensajes son almacenados de forma segura en la cadena de bloques y pueden ser marcados como eliminados por el remitente. También incluye verificación de propiedad de NFT, seguimiento de usuarios y verificación de firmas.
+
+sendDirectMessage(bytes32 senderNFTHash, bytes32 receiverNFTHash, bytes memory encryptedMessage, string memory jsonMetadataEncrypted, bytes32 signature) 
+⦁	Descripción: Permite a los usuarios enviar mensajes directos cifrados entre sí.
+
+getConversation(bytes32 senderNFTHash, bytes32 receiverNFTHash) 
+Descripción: Obtiene la conversación entre dos usuarios en ambas direcciones 
+
+markMessageAsDeleted(bytes32 senderNFTHash, bytes32 receiverNFTHash, uint256 messageId) 
+⦁	Descripción: Marca un mensaje específico como eliminado por el remitente.
+
+deleteAllSenderMessages(bytes32 senderNFTHash, bytes32 receiverNFTHash) public:
+⦁	Marca todos los mensajes enviados por el remitente como eliminados en una conversación.
+
+markMessageAsNotDeleted(bytes32 senderNFTHash, bytes32 receiverNFTHash, uint256 messageId) public:
+⦁	Marca un mensaje específico como no eliminado por el remitente.
+
+undeleteAllSenderMessages(bytes32 senderNFTHash, bytes32 receiverNFTHash) public:
+⦁	Descripción: Marca todos los mensajes enviados por el remitente como no eliminados en una conversación.
+
+checkNFTOwnership(string memory nftUsername) public view returns (bool):
+⦁	Descripción: Verifica si el usuario es propietario del NFT asociado a un nombre de usuario.
+
+verifySignature(address signer, bytes memory message, bytes32 signature) 
+⦁	Verifica la firma digital de un mensaje utilizando la dirección del firmante, el mensaje y la firma.
+
+El contrato permite a los usuarios de NFT CAW enviar mensajes directos de forma segura y gestionar sus conversaciones, manteniendo el control sobre la eliminación de mensajes.

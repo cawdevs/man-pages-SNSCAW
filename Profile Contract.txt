@@ -1,0 +1,42 @@
+El contrato ProfileDataUsername es un contrato inteligente en Solidity que permite a los usuarios crear perfiles y seguir a otros usuarios en una plataforma basada en NFTs relacionados con nombres de usuario CAW. A continuación, se presenta un resumen de sus principales funciones y características:
+
+createProfile(string memory username, string memory profileJson) public returns (bool):
+⦁	Descripción: Permite a un usuario crear un perfil con un nombre de usuario y datos JSON asociados.
+
+updateProfile(string memory username, string memory profileJson) public:
+⦁	Permite a un usuario actualizar los datos de su perfil existente.
+
+follow(string memory senderNFTUsername, string memory receiverNFTUsername, address receiverContract, uint256 userTimestamp, uint256 contractTimestamp, bytes32 signatureToUser, bytes32 signatureToContract) public:
+⦁	Descripción: Permite que un usuario siga a otro usuario, lo que se registra en la plataforma.
+
+unfollow(string memory follower, string memory following) public:
+⦁	Descripción: Permite a un usuario dejar de seguir a otro usuario.
+
+getFollowing(string memory nftusername) public view returns (string[] memory):
+⦁	Descripción: Obtiene la lista de usuarios seguidos por un usuario dado.
+
+getFollowerCount(string memory nftusername) public view returns (uint256):
+⦁	Obtiene el número de seguidores de un usuario.
+
+getFollowingCount(string memory nftusername) public view returns (uint256):
+⦁	Obtiene el número de usuarios seguidos por un usuario.
+
+getProfile(string memory nftusername) public view returns (string memory):
+⦁	Obtiene los datos del perfil de un usuario.
+
+getProfileCount() public view returns (uint256):
+⦁	Obtiene el número total de perfiles creados en la plataforma.
+
+profileExists(string memory nftusername) private view returns (bool):
+⦁	Verifica si un perfil existe para un nombre de usuario dado.
+
+isNFTMinted(string memory username) private view returns (bool):
+⦁	Descripción: Verifica si un NFT relacionado con un nombre de usuario está minteado.
+
+checkNFTOwnership(address user, string memory nftUsername) public view returns (bool):
+⦁	Descripción: Verifica si un usuario es propietario del NFT relacionado con un nombre de usuario dado.
+
+isFollowing(string memory follower, string memory following) public view returns (bool):
+⦁	Comprueba si un usuario está siguiendo a otro usuario en la plataforma.
+
+El contrato también incluye estructuras de datos para perfiles, seguidores y funciones auxiliares para gestionar seguidores y usuarios seguidos, junto con eventos que registran la creación de perfiles y las acciones de seguir/dejar de seguir. Además, realiza transferencias de fondos mediante llamadas a un contrato externo (CAWTransferContract) para las acciones de seguimiento.

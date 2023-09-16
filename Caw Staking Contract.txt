@@ -1,0 +1,26 @@
+El contrato CawStakingContract es un contrato inteligente desarrollado en Solidity que permite a los usuarios realizar staking de tokens CAW (CawHunterDreamToken) y ganar recompensas por mantener sus tokens bloqueados en el contrato. 
+
+Funcionalidad clave:
+⦁	Los usuarios pueden realizar staking de sus tokens CAW.
+⦁	Los usuarios pueden retirar sus tokens del staking en cualquier momento.
+⦁	Los usuarios pueden reclamar las recompensas ganadas por su participación en staking.
+
+stake(uint256 amount) external:
+⦁	Descripción: Permite a los usuarios depositar una cantidad específica de tokens CAW para participar en el staking.
+
+unstake(uint256 amount) external:
+⦁	Permite a los usuarios retirar una cantidad específica de tokens CAW de su participación en staking.
+
+claimRewards() external:
+⦁	Permite a los usuarios reclamar las recompensas pendientes por su participación en staking.
+
+calculatePendingRewards(address stakerAddress) private view returns (uint256):
+⦁	Calcula las recompensas pendientes para un staker en función de su participación en staking y el tiempo transcurrido desde la última reclamación.
+
+getTotalStaked() public view returns (uint256):
+⦁	Permite a los usuarios obtener el total de tokens CAW apostados en el contrato de staking.
+
+getTotalRewards() public view returns (uint256):
+⦁	Permite a los usuarios obtener el total de recompensas distribuidas en tokens CAW en el contrato de staking.
+
+En resumen, este contrato proporciona una forma segura y automatizada para que los usuarios realicen staking de tokens CAW y ganen recompensas por mantener sus tokens bloqueados en el contrato, todo ello gestionado de manera transparente y descentralizada en la cadena de bloques Ethereum.

@@ -1,0 +1,85 @@
+El contrato NFTCawUsernameContract es un contrato inteligente en Solidity diseñado para gestionar tokens no fungibles (NFT) relacionados con nombres de usuario CAW. Permite la creación, transferencia, venta y compra de estos NFT, así como la validación de nombres de usuario y saldos de tokens CAW.
+
+mintNFT(string memory username) public returns (bool):
+⦁	Descripción: Permite a un usuario crear un NFT con un nombre de usuario CAW.
+Parámetros:
+⦁	username: El nombre de usuario que se desea crear como NFT.
+⦁	Restricciones: Verifica la validez del nombre de usuario, la disponibilidad y el saldo de tokens CAW del usuario.
+
+isMinted(string memory nftUsername) public view returns (bool):
+⦁	Descripción: Comprueba si un nombre de usuario ya ha sido minteado como un NFT.
+Parámetros:
+⦁	nftUsername: El nombre de usuario a verificar.
+
+isNFTOwner(address owner, string memory nftUsername, address caller) public view returns (bool):
+⦁	Descripción: Comprueba si una dirección es propietaria de un NFT específico.
+Parámetros:
+⦁	owner: La dirección que se desea comprobar si es propietaria.
+⦁	nftUsername: El nombre de usuario del NFT.
+⦁	caller: La dirección que realiza la llamada.
+
+getCawBalance(address user) public view returns (uint256):
+⦁	Descripción: Obtiene el saldo de tokens CAW de un usuario.
+Parámetros:
+⦁	user: La dirección del usuario.
+
+burnCaw(uint256 amount, address user) public:
+⦁	Descripción: Quema una cantidad específica de tokens CAW del usuario.
+Parámetros:
+⦁	amount: La cantidad de tokens CAW a quemar.
+⦁	user: La dirección del usuario.
+
+getMintingCost(string memory username) private pure returns (uint256):
+⦁	Descripción: Calcula el costo de mintear un NFT basado en la longitud del nombre de usuario.
+
+validateUsername(string memory username) private pure returns (bool):
+⦁	Descripción: Valida si un nombre de usuario cumple con ciertos requisitos (solo caracteres en minúsculas y números).
+
+getMintedUsernames(address walletAddress) public view returns (string[] memory):
+⦁	Descripción: Obtiene una lista de nombres de usuario CAW minteados por una dirección de billetera.
+
+transferNFT(address to, string memory username) public:
+⦁	Descripción: Permite a un usuario transferir un NFT a otra dirección de billetera.
+Parámetros:
+⦁	to: La dirección de billetera a la que se transferirá el NFT.
+⦁	username: El nombre de usuario del NFT a transferir.
+
+sellNFT(string memory username, uint256 price) public:
+⦁	Descripción: Pone un NFT a la venta a un precio específico.
+Parámetros:
+⦁	username: El nombre de usuario del NFT que se pondrá a la venta.
+⦁	price: El precio al que se venderá el NFT.
+
+cancelNFTSale(string memory username) public:
+⦁	Descripción: Cancela la venta de un NFT que se encuentra a la venta.
+Parámetros:
+⦁	username: El nombre de usuario del NFT cuya venta se cancelará.
+
+buyNFT(string memory username) public payable:
+⦁	Descripción: Permite a un usuario comprar un NFT que está a la venta.
+Parámetros:
+⦁	username: El nombre de usuario del NFT que se comprará.
+⦁	Restricciones: Verifica que el NFT exista, esté a la venta y que el pago coincida con el precio.
+
+removeStringFromArray(string[] storage array, string memory item) private returns (string[] storage):
+⦁	Descripción: Función auxiliar para eliminar un string de un array de strings.
+
+getEtherBalance(address user) public view returns (uint256):
+⦁	Descripción: Obtiene el saldo de Ether de un usuario.
+
+getNFTTokenId(string memory nftUsername) public view returns (uint256):
+⦁	Descripción: Obtiene el ID de token de un NFT basado en su nombre de usuario.
+
+getNFTOwner(string memory nftUsername) public view returns (address):
+⦁	Descripción: Obtiene la dirección del propietario de un NFT basado en su nombre de usuario.
+
+getNFTUsername(address walletAddress) public view returns (string memory):
+⦁	Descripción: Obtiene el nombre de usuario de un NFT propiedad de una dirección de billetera.
+
+getHashFromUsername(string memory username) public view returns (bytes32):
+⦁	Descripción: Obtiene el hash de un nombre de usuario.
+
+getUsernameFromHash(bytes32 hash) public view returns (string memory):
+⦁	Obtiene el nombre de usuario correspondiente a un hash dado.
+
+Este contrato proporciona funcionalidad para la creación, gestión y transferencia de NFT relacionados con nombres de usuario CAW, junto con la capacidad de vender y comprar estos NFT en la plataforma.

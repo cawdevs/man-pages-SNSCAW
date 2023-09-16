@@ -1,0 +1,29 @@
+El contrato CAWTransferContract es un contrato inteligente desarrollado en Solidity, diseñado para facilitar la transferencia de tokens CAW (CawHunterDreamToken) entre usuarios y contratos en la red Ethereum. Este contrato permite que los usuarios realicen transacciones seguras de tokens CAW, y las acciones que pueden realizar están determinadas por el tipo de acción especificado.
+El contrato CAWTransferContract actúa como un intermediario de confianza que garantiza que las transferencias de tokens CAW entre usuarios y contratos se realicen de manera segura y autenticada. Utiliza firmas digitales para verificar la identidad de los participantes y se basa en contratos externos, como el contrato de NFTCawUsername y el contrato de tokens CAW, para llevar a cabo las transferencias.
+El contrato es versátil y puede manejar diferentes tipos de acciones (como "like", "follow", "publisher", "share"), cada una con sus propias reglas de transferencia y distribución de tokens. Esto permite a los usuarios interactuar y realizar diversas operaciones en la plataforma basada en CAW.
+
+actionTransfer(string senderNFTUsername, string receiverNFTUsername, address receiverContract, uint256 userTimestamp, uint256 contractTimestamp, bytes32 signatureToUser, bytes32 signatureToContract, string typeAction)
+⦁	Esta función permite a los usuarios realizar transferencias de tokens CAW entre sí y hacia contratos. El tipo de acción (como "like" o "follow") determina la cantidad de tokens a transferir y cómo se distribuyen entre el usuario y el contrato. Se requieren firmas digitales para autenticar la transacción.
+
+addressToString(address _address)
+⦁	Esta función convierte una dirección Ethereum en una cadena de caracteres legible.
+
+getCawBalance(address user)
+⦁	Permite a los usuarios obtener el saldo de tokens CAW en una dirección específica.
+
+checkNFTOwnership(string nftUsername)
+⦁	Verifica si un usuario es el propietario de un NFT (Non-Fungible Token) asociado a un nombre de usuario específico.
+
+isNFTMinted(string nftUsername)
+⦁	Verifica si un NFTUsername ha sido minteado (creado).
+
+getNFTUsername(address walletAddress)
+⦁	Obtiene el nombre de usuario asociado a una dirección de billetera.
+
+verifySignature(string senderNFTUsername, string receiverNFTUsername, uint256 amount, uint256 timestamp, bytes32 signature)
+⦁	Verifica la firma digital de una transacción para garantizar que sea auténtica y provenga del propietario legítimo.
+
+verifyContractSignature(address receiverContract, uint256 amount, uint256 timestamp, bytes32 signature)
+⦁	Similar a verifySignature, pero específico para contratos. Verifica la firma de una transacción dirigida a un contrato.
+
+Estas funciones permiten a los usuarios interactuar con el contrato CAWTransferContract de manera segura y realizar transferencias de tokens CAW entre sí y hacia contratos. Asegúrate de seguir las pautas adecuadas y proporcionar la información requerida para realizar transacciones exitosas.

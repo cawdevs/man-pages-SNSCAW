@@ -1,0 +1,81 @@
+El contrato "CawPublisher" es un contrato inteligente desarrollado en Solidity que facilita la creación y gestión de publicaciones en una plataforma de redes sociales descentralizada. Aquí hay una breve descripción de lo que hace este contrato:
+Creación de Publicaciones: Los usuarios pueden crear publicaciones, que pueden ser publicaciones principales, respuestas o hilos de discusión. Cada publicación contiene contenido de texto y metadatos JSON.
+Reacciones y Comparticiones: Los usuarios pueden agregar o quitar "likes" (me gusta) a las publicaciones y compartir o quitar la compartición de las mismas. Estas acciones se registran y se pueden contar.
+Transferencia de Fondos: Se realiza una transferencia de fondos interna cuando los usuarios realizan ciertas acciones, como agregar "likes" o compartir publicaciones. Esto está destinado a incentivar la participación y la interacción en la plataforma.
+
+ createPublication (string memory senderNFTUsername, address receiverContract, uint256 contractTimestamp, bytes32 signatureToContract, string memory content, string memory jsonMetadata, PublicationType publicationType, uint256 parentPublicationId): 
+⦁	Crea una publicación en el contrato. Puede ser una publicación principal, respuesta o hilo.
+
+createPublication (string memory senderNFTUsername, string memory content, string memory jsonMetadata, PublicationType publicationType, uint256 parentPublicationId): 
+⦁	Función auxiliar para crear una publicación en el contrato.
+
+deletePublication (string memory nftUsername, uint256 id): 
+⦁	Marca una publicación como eliminada, cambiando su tipo a "DeletePost".
+
+verifyNFTOwnership (string memory nftUsername, address sender): 
+⦁	Verifica si el propietario de la dirección actual es dueño del NFT.
+
+transferFoundPublisher (string memory senderNFTUsername, address receiverContract, uint256 contractTimestamp, bytes32 signatureToContract, string memory typeAction): 
+⦁	Realiza transferencia de fondos entre usuarios utilizando el contrato CAWTransferContract.
+
+addReaction (string memory senderNFTUsername, string memory receiverNFTUsername, address receiverContract, uint256 userTimestamp, uint256 contractTimestamp, bytes32 signatureToUser, bytes32 signatureToContract, uint256 id): 
+⦁	Permite a un usuario agregar o quitar una reacción "like" a una publicación.
+
+sharePublication (string memory senderNFTUsername, string memory receiverNFTUsername, address receiverContract, uint256 userTimestamp, uint256 contractTimestamp, bytes32 signatureToUser, bytes32 signatureToContract, uint256 id): 
+⦁	Permite a un usuario compartir o quitar la compartición de una publicación.
+
+transferFundsShares (string memory senderNFTUsername, address receiverContract, uint256 contractTimestamp, bytes32 signatureToContract, string memory typeAction): 
+⦁	Realiza transferencia de fondos para la acción de compartir una publicación.
+
+findPublicationId (uint256 id, string memory nftUsername):
+⦁	 Devuelve el ID de una publicación en función de su índice y el nombre de usuario del NFT.
+
+getUserPublication (string memory nftUsername, uint256 id): 
+⦁	Devuelve los detalles de una publicación específica de un usuario.
+
+getListUserPublication (string memory nftUsername, uint256 offset, uint256 limit): 
+⦁	Devuelve una lista de las publicaciones de un usuario, con límite y desplazamiento.
+
+getUserLikeStatusByPublication (string memory nftUsername, uint256 publicationId): 
+⦁	Devuelve si a un usuario le gusta una publicación específica.
+
+getUserShareStatusByPublication (string memory nftUsername, uint256 publicationId):
+⦁	 Devuelve si un usuario ha compartido una publicación específica.
+
+getLikesCountByPublication (uint256 publicationId): 
+⦁	Devuelve la cantidad total de "likes" en una publicación.
+
+getSharesCountByPublication (uint256 publicationId): 
+⦁	Devuelve la cantidad total de veces que se ha compartido una publicación.
+
+getUserTotalPublicationsCount (string memory nftUsername): 
+⦁	Devuelve la cantidad total de publicaciones de un usuario.
+
+getTotalPublications ():
+⦁	 Devuelve el número total de publicaciones en el contrato.
+
+checkNFTOwnership (string memory nftUsername): 
+⦁	Verifica la propiedad de un NFT por parte de la dirección actual.
+
+getNFTUsername (address walletAddress): 
+⦁	Devuelve el nombre de usuario del NFT asociado a una dirección.
+
+getSmartUserPublication (string memory nftUsername, uint256 id): 
+⦁	Devuelve una cadena de publicaciones que incluye hilos y respuestas relacionadas con una publicación.
+
+appendPublicationToChain (Publication[] memory chain, Publication memory newPublication): 
+⦁	Función auxiliar para agregar una publicación a una cadena de publicaciones.
+
+getUserThread (string memory nftUsername, uint256 index): 
+⦁	Devuelve el hilo de un usuario en función de su índice.
+
+getUserResponsesWithParent (string memory nftUsername, uint256 index): 
+⦁	Devuelve las respuestas de un usuario junto con sus publicaciones padre.
+
+getUserMainPost (string memory nftUsername, uint256 id): 
+⦁	Devuelve el "MainPost" de un usuario en función de su índice.
+
+getPublicationCounts (string memory nftUsername): 
+⦁	Devuelve la cantidad de "MainPosts," hilos y respuestas de un usuario.
+
+En resumen, el contrato "CawPublisher" proporciona una base sólida para la creación de una plataforma de redes sociales descentralizada, permitiendo a los usuarios interactuar, compartir contenido y registrar sus acciones, todo mientras se asegura de que solo los propietarios de NFT tengan ciertos privilegios en la plataforma.

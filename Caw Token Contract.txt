@@ -1,0 +1,32 @@
+Contrato ERC20  "Caw Hunter Dream"  "CAW". 
+Contrato ERC-20 (Ethereum Request for Comments 20) es un tipo específico de contrato inteligente en la plataforma Ethereum que sigue un estándar definido para la creación y gestión de tokens digitales. Estos tokens se utilizan comúnmente en la red Ethereum y siguen un conjunto de reglas predefinidas que garantizan su compatibilidad e interoperabilidad con otras aplicaciones y billeteras que también cumplen con el estándar ERC-20
+Descripción: Este contrato, inicializa el token con un suministro inicial de 666,666,666,666,666 unidades "CAW".
+
+ balanceOf(address _owner) public view returns (uint256): 
+⦁	Esta función permite a un usuario consultar el saldo de tokens de su cuenta. Toma como entrada la dirección del titular de la cuenta y devuelve la cantidad de tokens en esa cuenta.
+
+transfer(address _to, uint256 _value) public returns (bool): 
+⦁	Permite que el titular de la cuenta transfiera una cantidad específica de tokens a otra dirección. Devuelve true si la transferencia se realiza con éxito.
+
+transferFrom(address _from, address _to, uint256 _value) public returns (bool):
+⦁	Esta función se utiliza para realizar transferencias en nombre de otro titular de cuenta. Requiere la aprobación previa del titular de cuenta desde el cual se están transfiriendo los tokens. Devuelve true si la transferencia se realiza con éxito.
+
+approve(address _spender, uint256 _value) public returns (bool):
+⦁	Permite a un titular de cuenta otorgar permiso a otra dirección (el "gastador") para gastar una cantidad específica de tokens en su nombre. Esta función se utiliza en conjunción con transferFrom. Devuelve true si se aprueba con éxito.
+
+allowance(address _owner, address _spender) public view returns (uint256):
+⦁	Permite a un titular de cuenta verificar la cantidad de tokens que ha aprobado para que un gastador gaste en su nombre.
+
+authorizeContract(address contractAddress):
+⦁	Autoriza un contrato específico para interactuar con este contrato.
+
+revokeAuthorization(address contractAddress):
+⦁	Revoca la autorización de un contrato previamente autorizado para interactuar con este contrato.
+
+burn(uint256 amount, address user):
+⦁	Quema una cantidad específica de tokens "CAW" de una dirección específica.
+
+approveCAWTransfer(address spender, uint256 amount):
+⦁	Permite a un usuario aprobar la transferencia de una cantidad específica de tokens "CAW" a otro contrato o dirección.
+
+Estas funciones y eventos son parte del estándar ERC-20 y brindan una forma consistente y estandarizada de interactuar con tokens en la red Ethereum. Esto facilita la integración y el uso de tokens ERC-20 en diversas aplicaciones, como billeteras, intercambios y contratos inteligentes. Cada token ERC-20 implementa estas funciones para que los usuarios puedan realizar transacciones y verificar saldos de manera uniforme en toda la red.
